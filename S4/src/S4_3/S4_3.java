@@ -122,6 +122,7 @@ class PartTimeMember extends Vip implements StaffSalary
 	{
 		super(name,money);
 	}
+//	由于实现了接口所以必须写这个方法，要不然可以删掉的，Person里面有了
 	public void addSalary()
 	{
 		super.addSalary();
