@@ -68,7 +68,7 @@ public class S5_2
 						System.out.println("密码错误，请重新输入！");
 						if(i==2)
 						{
-//							三次失败
+//							三次失败就失败
 							System.out.println("登录失败，无法再继续登录");
 							break signIn;
 						}
