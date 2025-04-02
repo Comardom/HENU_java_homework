@@ -15,21 +15,19 @@ interface Inner
 
 class Outer
 {
-	//补齐代码，完成方法主要功能
+	// 使用匿名内部类实现 Inner 接口
 	public static Inner method()
 	{
-		class inInner implements Inner
+		return new Inner()
 		{
+			@Override
 			public void introduce()
 			{
 				System.out.println("实现了Inner接口的匿名内部类！");
 			}
-		}
-		return new inInner();
-		//这一句是问ai的，ai还让我用匿名内部类和lambda表达式
+		};
 	}
 }
-
 class InnerClassTest
 {
 	public static void main(String[] args)
