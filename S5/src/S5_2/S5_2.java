@@ -10,12 +10,14 @@ public class S5_2
 {
 	public static void main(String[] args)
 	{
+//		此处为大循环（full）三个板块：注册、登录、登录失败处理
 		Scanner in = new Scanner(System.in);
 		full:
 		for(;;)
 		{
 			User aUser = new User();
 			String[] tmp = new String[4];
+//			此处tmp同时用于注册和登录
 			register:
 			for(;;)
 			{
@@ -50,14 +52,14 @@ public class S5_2
 					tmp[i] = in.nextLine();
 				}
 				int i = 0;
-				ifTrue:
 				for(;;)
 				{
 					if(tmp[0].equals(aUser.getUsername())
 							&& SHA256Hash.hash(tmp[1].toLowerCase())
 									.equals(aUser.getPasswdHash()))
 					{
-						Calc calc = new Calc();
+//						此处打开计算器
+						Calc.calc();
 						break full;
 					}
 					else
@@ -66,12 +68,14 @@ public class S5_2
 						System.out.println("密码错误，请重新输入！");
 						if(i==2)
 						{
+//							三次失败
 							System.out.println("登录失败，无法再继续登录");
 							break signIn;
 						}
 					}
 				}
 			}
+			ifReRegister:
 			for(;;)
 			{
 				System.out.println("If you wanna register again?");
@@ -81,9 +85,14 @@ public class S5_2
 				{
 					continue full;
 				}
-				else
+				else if(input.equalsIgnoreCase("n"))
 				{
 					break full;
+				}
+				else
+				{
+					System.out.println("Em? Invalid entry.");
+					continue ifReRegister;
 				}
 			}
 		}
@@ -124,14 +133,9 @@ class User
 		this.phoneNum = phoneNum;
 	}
 
-
 	public String getUsername()
 	{
 		return username;
-	}
-	public String getPhoneNum()
-	{
-		return phoneNum;
 	}
 	public String getPasswdHash()
 	{
@@ -141,7 +145,7 @@ class User
 //这个类是ai写的，我完全不会
 class Calc
 {
-	public Calc()
+	public static void calc()
 	{
 		String os = System.getProperty("os.name").toLowerCase();
 		String calculatorCmd;
