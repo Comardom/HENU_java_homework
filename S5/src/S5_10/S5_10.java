@@ -40,6 +40,7 @@ public class S5_10
 			String item = it.next();
 			System.out.println(item);
 		}
+		in.close();
 	}
 }
 //使用ArrayList集合，向集合中添加10个整数，并使用Iterator遍历该集合，并查找键盘输入的元素。提示：
